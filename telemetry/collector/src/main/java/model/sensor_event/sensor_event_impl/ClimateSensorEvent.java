@@ -1,4 +1,28 @@
 package model.sensor_event.sensor_event_impl;
 
-public class ClimateSensorEvent {
+import jakarta.validation.constraints.NotNull;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+import model.sensor_event.SensorEvent;
+import model.sensor_event.SensorEventType;
+
+@Getter
+@Setter
+@ToString(callSuper = true)
+public class ClimateSensorEvent extends SensorEvent {
+
+    @NotNull
+    private Integer temperatureC;
+
+    @NotNull
+    private Integer humidity;
+
+    @NotNull
+    private Integer co2Level;
+
+    @Override
+    public SensorEventType getType(){
+        return SensorEventType.CLIMATE_SENSOR_EVENT;
+    }
 }
