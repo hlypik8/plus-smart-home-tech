@@ -9,7 +9,7 @@ protocol SensorEventProtocol {
 
 	record LightSensorAvro {
 		int linkQuality;
-		int luminocity;
+		int luminosity;
 	}
 
 	record MotionSensorAvro {

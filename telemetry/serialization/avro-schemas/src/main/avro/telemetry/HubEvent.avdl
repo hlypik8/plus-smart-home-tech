@@ -33,11 +33,13 @@ protocol HubEventProtocol {
 
 	record DeviceActionAvro {
 		string deviceId;
-		DeviceTypeAvro deviceType;
+		ActiontTypeAvro actionType;
+		int? value = null;
 	}
 
 	record DeviceAddedEventAvro {
 		string deviceId;
+		DeviceTypeAvro type;
 	}
 
 	record DeiceRemovedEventAvro {
