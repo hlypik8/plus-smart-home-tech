@@ -67,8 +67,8 @@ public abstract class EventsMapper {
     protected MotionSensorAvro toMotionPayload(MotionSensorEvent event) {
         MotionSensorAvro payload = new MotionSensorAvro();
         payload.setLinkQuality(event.getLinkQuality());
-        payload.setMotion(event.getMotion());
         payload.setVoltage(event.getVoltage());
+        payload.setMotion(event.getMotion());
         return payload;
     }
 
