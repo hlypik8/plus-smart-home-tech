@@ -16,10 +16,10 @@ public class MotionSensorEvent extends SensorEvent {
     private Integer linkQuality;
 
     @NotNull
-    private Boolean motion;
+    private Integer voltage;
 
     @NotNull
-    private Integer voltage;
+    private Boolean motion;
 
     @Override
     public SensorEventType getType(){
