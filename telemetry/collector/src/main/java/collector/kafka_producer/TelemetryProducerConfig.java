@@ -21,7 +21,7 @@ public class TelemetryProducerConfig {
 
     public static final String BOOTSTRAPSERVER = "localhost:9092";
     public static final String KEYSERIALIZER = "org.apache.kafka.common.serialization.StringSerializer";
-    public static final String VALUESERIALIZER = "AvroSerializer";
+    public static final String VALUESERIALIZER = "serialization.avro.AvroSerializer";
     public static final String SENSORTOPIC = "telemetry.sensors.v1";
     public static final String HUBTOPIC = "telemetry.hubs.v1";
 
@@ -32,7 +32,6 @@ public class TelemetryProducerConfig {
         configProps.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, BOOTSTRAPSERVER);
         configProps.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, KEYSERIALIZER);
         configProps.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, VALUESERIALIZER);
-
         log.info("Создание ProducerFactory");
 
         return new DefaultKafkaProducerFactory<>(configProps);

@@ -40,7 +40,7 @@ public class CollectorService {
                 default -> throw new IllegalArgumentException("Тип датчика с которым произошло событие неизвестен "
                         + sensorEvent.getType());
             };
-            log.info("Отправка события " + sensorEvent.getType() + " датчика в kafka");
+            log.info("Отправка события {} в kafka", sensorEvent.getType());
 
             long timestamp = sensorEventAvro.getTimestamp().toEpochMilli();
 
