@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.producer.ProducerConfig;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.core.DefaultKafkaProducerFactory;
@@ -19,26 +20,27 @@ import java.util.Map;
 @Slf4j
 public class TelemetryProducerConfig {
 
-    public static final String BOOTSTRAPSERVER = "localhost:9092";
-    public static final String KEYSERIALIZER = "org.apache.kafka.common.serialization.StringSerializer";
-    public static final String VALUESERIALIZER = "serialization.avro.AvroSerializer";
-    public static final String SENSORTOPIC = "telemetry.sensors.v1";
-    public static final String HUBTOPIC = "telemetry.hubs.v1";
+    @Value("${bootstrap.server}")
+    private String bootstrapServer;
+    @Value("${key.serializer}")
+    private String keySerializer;
+    @Value("${value.serializer}")
+    private String valueSerializer;
 
     @Bean
-    public ProducerFactory<String, Object> producerFactory(){
+    public ProducerFactory<String, Object> producerFactory() {
         Map<String, Object> configProps = new HashMap<>();
 
-        configProps.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, BOOTSTRAPSERVER);
-        configProps.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, KEYSERIALIZER);
-        configProps.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, VALUESERIALIZER);
+        configProps.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServer);
+        configProps.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, keySerializer);
+        configProps.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, valueSerializer);
         log.info("Создание ProducerFactory");
 
         return new DefaultKafkaProducerFactory<>(configProps);
     }
 
     @Bean
-    public KafkaTemplate<String, Object> kafkaTemplate(){
+    public KafkaTemplate<String, Object> kafkaTemplate() {
         log.info("Создание kafkaTemplate");
         return new KafkaTemplate<>(producerFactory());
     }
