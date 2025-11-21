@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.ERROR)
-public abstract class EventsMapper {
+public abstract class AvroMapper {
 
     @Mapping(target = "payload", source = ".", qualifiedByName = "toClimatePayload")
     public abstract SensorEventAvro toAvro(ClimateSensorEvent event);
@@ -126,7 +126,7 @@ public abstract class EventsMapper {
 
     protected ScenarioConditionAvro ConditionToMap(ScenarioCondition condition) {
         ScenarioConditionAvro avro = new ScenarioConditionAvro();
-        avro.setSensorId(condition.getSensorId());
+        avro.setDeviceId(condition.getSensorId());
         avro.setType(ConditionTypeAvro.valueOf(condition.getType().name()));
         avro.setOperation(ConditionOperationAvro.valueOf(condition.getOperation().name()));
 
@@ -151,7 +151,7 @@ public abstract class EventsMapper {
     protected DeviceActionAvro ActionToMap(DeviceAction action) {
         DeviceActionAvro avro = new DeviceActionAvro();
         avro.setDeviceId(action.getSensorId());
-        avro.setActionType(ActiontTypeAvro.valueOf(action.getType().name()));
+        avro.setType(ActionTypeAvro.valueOf(action.getType().name()));
 
         if (action.getValue() != null) {
             avro.setValue(action.getValue());
