@@ -1,4 +1,4 @@
-package analyzer.config;
+package ru.practicum.analyzer.config;
 
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;

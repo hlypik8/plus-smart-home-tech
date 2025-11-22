@@ -1,6 +1,6 @@
-package analyzer.repository;
+package ru.practicum.analyzer.repository;
 
-import analyzer.model.Scenario;
+import ru.practicum.analyzer.model.Scenario;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

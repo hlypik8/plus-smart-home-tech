@@ -1,10 +1,10 @@
-package analyzer.mapper;
+package ru.practicum.analyzer.mapper;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import analyzer.model.Scenario;
-import analyzer.model.Sensor;
-import analyzer.repository.SensorRepository;
+import ru.practicum.analyzer.model.Scenario;
+import ru.practicum.analyzer.model.Sensor;
+import ru.practicum.analyzer.repository.SensorRepository;
 import ru.yandex.practicum.kafka.telemetry.event.ScenarioAddedEventAvro;
 
 @Service

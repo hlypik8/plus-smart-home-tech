@@ -1,11 +1,11 @@
-package analyzer.mapper;
+package ru.practicum.analyzer.mapper;
 
-import analyzer.model.Action;
+import ru.practicum.analyzer.model.Action;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;
-import analyzer.model.Condition;
-import analyzer.model.Scenario;
+import ru.practicum.analyzer.model.Condition;
+import ru.practicum.analyzer.model.Scenario;
 import ru.yandex.practicum.grpc.telemetry.event.DeviceActionProto;
 import ru.yandex.practicum.kafka.telemetry.event.DeviceActionAvro;
 import ru.yandex.practicum.kafka.telemetry.event.ScenarioAddedEventAvro;
