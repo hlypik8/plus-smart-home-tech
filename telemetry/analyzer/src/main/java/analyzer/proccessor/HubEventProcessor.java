@@ -1,0 +1,100 @@
+package analyzer.proccessor;
+
+import analyzer.mapper.ScenarioMappingService;
+import analyzer.model.Scenario;
+import analyzer.model.Sensor;
+import analyzer.repository.ScenarioRepository;
+import analyzer.repository.SensorRepository;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.avro.specific.SpecificRecordBase;
+import org.apache.kafka.clients.consumer.ConsumerRecords;
+import org.apache.kafka.clients.consumer.KafkaConsumer;
+import org.apache.kafka.common.errors.WakeupException;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+import analyzer.config.ConsumerFactory;
+import ru.yandex.practicum.kafka.telemetry.event.DeviceAddedEventAvro;
+import ru.yandex.practicum.kafka.telemetry.event.DeiceRemovedEventAvro;
+import ru.yandex.practicum.kafka.telemetry.event.HubEventAvro;
+import ru.yandex.practicum.kafka.telemetry.event.ScenarioAddedEventAvro;
+import ru.yandex.practicum.kafka.telemetry.event.ScenarioRemovedEventAvro;
+
+import java.time.Duration;
+import java.util.List;
+
+@Slf4j
+@Component
+@RequiredArgsConstructor
+public class HubEventProcessor implements Runnable {
+    private final ConsumerFactory factory;
+    private final ScenarioMappingService scenarioMappingService;
+    private final SensorRepository sensorRepository;
+    private final ScenarioRepository scenarioRepository;
+
+    @Value("${hub.topic}")
+    private String hubTopic;
+
+    @Override
+    public void run() {
+        KafkaConsumer<String, SpecificRecordBase> consumer = factory.createHubConsumer();
+
+        try {
+            consumer.subscribe(List.of(hubTopic));
+
+            while (true) {
+                ConsumerRecords<String, SpecificRecordBase> records = consumer.poll(Duration.ofSeconds(1));
+
+                log.info("Получено {} записей из топика {}", records.count(), hubTopic);
+
+                records.forEach(record -> {
+                    try {
+                        HubEventAvro event = (HubEventAvro) record.value();
+                        SpecificRecordBase payload = (SpecificRecordBase) event.getPayload();
+
+                        switch (payload) {
+                            case DeviceAddedEventAvro deviceAvro -> {
+                                log.info("Добавляем устройство {} для хаба {}", deviceAvro.getDeviceId(), event.getHubId());
+                                Sensor sensor = new Sensor();
+                                sensor.setId(deviceAvro.getDeviceId());
+                                sensor.setHubId(event.getHubId());
+                                sensorRepository.save(sensor);
+                                log.info("Устройство сохранено: {}", sensor);
+                            }
+                            case DeiceRemovedEventAvro removedAvro -> {
+                                log.info("Удаляем устройство {}", removedAvro.getDeviceId());
+                                sensorRepository.deleteById(removedAvro.getDeviceId());
+                            }
+                            case ScenarioAddedEventAvro scenarioAvro -> {
+                                log.info("Добавляем сценарий {} для хаба {}", scenarioAvro.getName(), event.getHubId());
+                                Scenario scenario = scenarioMappingService.completeScenarioMapping(scenarioAvro, event.getHubId());
+                                scenarioRepository.save(scenario);
+                                log.info("Сценарий сохранен: {}", scenario);
+                            }
+                            case ScenarioRemovedEventAvro removedAvro -> {
+                                log.info("Удаляем сценарий {}", removedAvro.getName());
+                                scenarioRepository.deleteByName(removedAvro.getName());
+                            }
+                            default -> log.warn("Неизвестный тип события");
+                        }
+                    } catch (Exception e) {
+                        log.error("Ошибка обработки записи", e);
+                    }
+                });
+
+                consumer.commitSync();
+            }
+        } catch (WakeupException ignored) {
+            log.error("Ошибка WakeupException");
+        } catch (Exception e) {
+            log.error("Ошибка во время обработки событий от датчиков", e);
+        } finally {
+            try {
+                consumer.commitSync();
+            } finally {
+                log.info("Закрываем консьюмер");
+                consumer.close();
+            }
+        }
+    }
+}
