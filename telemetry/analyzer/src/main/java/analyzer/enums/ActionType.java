@@ -1,4 +1,4 @@
-package ru.practicum.analyzer.enums;
+package analyzer.enums;
 
 public enum ActionType {
     ACTIVATE,

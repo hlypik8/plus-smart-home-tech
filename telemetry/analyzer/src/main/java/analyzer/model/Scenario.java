@@ -1,4 +1,4 @@
-package ru.practicum.analyzer.model;
+package analyzer.model;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;

@@ -1,4 +1,4 @@
-package ru.practicum.analyzer.model;
+package analyzer.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -14,27 +14,23 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import ru.practicum.analyzer.enums.ConditionOperation;
-import ru.practicum.analyzer.enums.ConditionType;
+import analyzer.enums.ActionType;
 
 import java.util.List;
 
 @Entity
-@Table(name = "conditions")
+@Table(name = "actions")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-public class Condition {
+public class Action {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Enumerated(EnumType.STRING)
-    private ConditionType type;
-
-    @Enumerated(EnumType.STRING)
-    private ConditionOperation operation;
+    private ActionType type;
 
     private Integer value;
 
@@ -42,6 +38,6 @@ public class Condition {
     @JoinColumn(name = "sensor_id")
     private Sensor sensor;
 
-    @ManyToMany(mappedBy = "conditions")
+    @ManyToMany(mappedBy = "actions")
     private List<Scenario> scenarios;
 }

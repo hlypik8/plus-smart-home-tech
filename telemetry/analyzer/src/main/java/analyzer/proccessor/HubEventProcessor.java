@@ -1,10 +1,10 @@
-package ru.practicum.analyzer.proccessor;
+package analyzer.proccessor;
 
-import ru.practicum.analyzer.mapper.ScenarioMappingService;
-import ru.practicum.analyzer.model.Scenario;
-import ru.practicum.analyzer.model.Sensor;
-import ru.practicum.analyzer.repository.ScenarioRepository;
-import ru.practicum.analyzer.repository.SensorRepository;
+import analyzer.mapper.ScenarioMappingService;
+import analyzer.model.Scenario;
+import analyzer.model.Sensor;
+import analyzer.repository.ScenarioRepository;
+import analyzer.repository.SensorRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.avro.specific.SpecificRecordBase;
@@ -13,7 +13,7 @@ import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.common.errors.WakeupException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-import ru.practicum.analyzer.config.ConsumerFactory;
+import analyzer.config.ConsumerFactory;
 import ru.yandex.practicum.kafka.telemetry.event.DeviceAddedEventAvro;
 import ru.yandex.practicum.kafka.telemetry.event.DeiceRemovedEventAvro;
 import ru.yandex.practicum.kafka.telemetry.event.HubEventAvro;

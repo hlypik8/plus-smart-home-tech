@@ -1,4 +1,4 @@
-package ru.practicum.analyzer.config;
+package analyzer.config;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.avro.specific.SpecificRecordBase;

@@ -1,12 +1,12 @@
-package ru.practicum.analyzer;
+package analyzer;
 
+import analyzer.proccessor.HubEventProcessor;
+import analyzer.proccessor.SnapshotProcessor;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 import org.springframework.context.ConfigurableApplicationContext;
 
-import ru.practicum.analyzer.proccessor.HubEventProcessor;
-import ru.practicum.analyzer.proccessor.SnapshotProcessor;
 
 @SpringBootApplication
 @ConfigurationPropertiesScan

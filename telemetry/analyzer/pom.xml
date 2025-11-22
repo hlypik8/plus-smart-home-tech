@@ -88,7 +88,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>3.3.2</version>
                 <configuration>
-                    <mainClass>ru.practicum.Analyzer</mainClass>
+                    <mainClass>ru.practicum.AnalyzerApp</mainClass>
                     <excludes>
                         <exclude>
                             <groupId>org.projectlombok</groupId>

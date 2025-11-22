@@ -1,7 +1,7 @@
-package ru.practicum.analyzer.repository;
+package analyzer.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import ru.practicum.analyzer.model.Sensor;
+import analyzer.model.Sensor;
 
 import java.util.Collection;
 import java.util.Optional;

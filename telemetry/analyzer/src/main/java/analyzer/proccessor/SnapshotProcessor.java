@@ -1,4 +1,4 @@
-package ru.practicum.analyzer.proccessor;
+package analyzer.proccessor;
 
 import com.google.protobuf.Timestamp;
 import lombok.RequiredArgsConstructor;
@@ -9,11 +9,11 @@ import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.common.errors.WakeupException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-import ru.practicum.analyzer.config.ConsumerFactory;
-import ru.practicum.analyzer.mapper.MapperClass;
-import ru.practicum.analyzer.model.Condition;
-import ru.practicum.analyzer.model.Scenario;
-import ru.practicum.analyzer.repository.ScenarioRepository;
+import analyzer.config.ConsumerFactory;
+import analyzer.mapper.MapperClass;
+import analyzer.model.Condition;
+import analyzer.model.Scenario;
+import analyzer.repository.ScenarioRepository;
 import ru.yandex.practicum.grpc.telemetry.event.DeviceActionRequest;
 import ru.yandex.practicum.grpc.telemetry.hubrouter.HubRouterControllerGrpc;
 import ru.yandex.practicum.kafka.telemetry.event.ClimateSensorAvro;
