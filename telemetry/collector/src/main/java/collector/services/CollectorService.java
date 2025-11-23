@@ -30,7 +30,7 @@ public class CollectorService {
         kafkaTemplate.send(sensorTopic, null, event.getTimestamp().toEpochMilli(), event.getHubId(), event)
                 .whenComplete((result, exception) -> {
                     if (exception == null) {
-                        log.info("Событие сенсора успешно отправлено");
+                        log.info("Событие датчика {} успешно отправлено в kafka", event.getId());
                         log.debug(event.toString());
                     } else {
                         log.error("Не удалось отправить событие сенсора, {}", exception.toString());
@@ -43,7 +43,7 @@ public class CollectorService {
         kafkaTemplate.send(hubTopic, null, event.getTimestamp().toEpochMilli(), event.getHubId(), event)
                 .whenComplete((result, exception) -> {
                     if (exception == null) {
-                        log.info("Событие хаба успешно отправлено");
+                        log.info("Событие хаба {} успешно отправлено в kafka", event.getHubId());
                         log.debug(event.toString());
                     } else {
                         log.error("Не удалось отправить событие хаба, {}", exception.toString());

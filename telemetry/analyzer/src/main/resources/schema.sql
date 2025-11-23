@@ -32,6 +32,7 @@ CREATE TABLE IF NOT EXISTS scenario_conditions (
     scenario_id BIGINT REFERENCES scenarios(id),
     sensor_id VARCHAR REFERENCES sensors(id),
     condition_id BIGINT REFERENCES conditions(id),
+    cond_order INTEGER DEFAULT 0 NOT NULL,
     PRIMARY KEY (scenario_id, sensor_id, condition_id)
 );
 
@@ -40,6 +41,7 @@ CREATE TABLE IF NOT EXISTS scenario_actions (
     scenario_id BIGINT REFERENCES scenarios(id),
     sensor_id VARCHAR REFERENCES sensors(id),
     action_id BIGINT REFERENCES actions(id),
+    action_order INTEGER DEFAULT 0 NOT NULL,
     PRIMARY KEY (scenario_id, sensor_id, action_id)
 );
 

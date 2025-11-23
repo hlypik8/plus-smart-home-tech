@@ -23,7 +23,7 @@ public class AggregatorStarter {
 
     private final AggregatorConsumer consumerFactory;
     private final AggregatorProducer producerFactory;
-    private final AggregatorService service;
+    private final AggregatorService service = new AggregatorService();
 
     @Value("${sensor.topic}")
     private String sensorTopic;

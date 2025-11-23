@@ -20,7 +20,7 @@ public class ScenarioMappingService {
             scenario.getConditions().forEach(condition -> {
                 String sensorId = condition.getSensor().getId();
                 Sensor sensor = sensorRepository.findById(sensorId)
-                        .orElseThrow(() -> new RuntimeException("Датчик не найден: " + sensorId));
+                        .orElseThrow(() -> new SensorNotFoundException("Датчик не найден: " + sensorId));
                 condition.setSensor(sensor);
             });
         }
