@@ -10,7 +10,7 @@ protocol HubEventProtocol {
 		HUMIDITY
 	}
 
-	enum ActiontTypeAvro {
+	enum ActionTypeAvro {
 		ACTIVATE,
 		DEACTIVATE,
 		INVERSE,
@@ -32,18 +32,18 @@ protocol HubEventProtocol {
 	}
 
 	record DeviceActionAvro {
-		string deviceId;
-		ActiontTypeAvro actionType;
+		string device_id;
+		ActionTypeAvro type;
 		int? value = null;
 	}
 
 	record DeviceAddedEventAvro {
-		string deviceId;
+		string device_id;
 		DeviceTypeAvro type;
 	}
 
 	record DeiceRemovedEventAvro {
-		string deviceId;
+		string device_id;
 	}
 
 	record ScenarioAddedEventAvro {
@@ -57,14 +57,14 @@ protocol HubEventProtocol {
 	}
 
 	record ScenarioConditionAvro {
-		string sensorId;
+		string device_id;
 		ConditionTypeAvro type;
 		ConditionOperationAvro operation;
 		union{null, int, boolean} value = null;
 	}
 
 	record HubEventAvro {
-		string hubId;
+		string hub_id;
 		timestamp_ms timestamp;
 		union{
 			DeviceAddedEventAvro,
