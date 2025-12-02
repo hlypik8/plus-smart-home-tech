@@ -14,13 +14,14 @@ import java.util.Map;
 @Configuration
 @Slf4j
 public class AggregatorConsumer {
-    @Value("${bootstrap.server}")
+
+    @Value("${aggregator.spring.kafka.bootstrap-server}")
     private String bootstrapServer;
-    @Value("${key.deserializer}")
+    @Value("${aggregator.spring.kafka.consumer.key-deserializer}")
     private String keyDeserializer;
-    @Value("${value.deserializer}")
+    @Value("${aggregator.spring.kafka.consumer.value-deserializer}")
     private String valueDeserializer;
-    @Value("${client.group}")
+    @Value("${aggregator.spring.kafka.consumer.group-id}")
     private String clientGroup;
 
 

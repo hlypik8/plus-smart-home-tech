@@ -1,11 +1,11 @@
+grpc:
+  server:
+    port: 59091
+
 collector:
   spring:
-    grpc:
-      server:
-        port: 9090
-
     kafka:
-      bootstrap-servers: "localhost:9092"
+      bootstrap-server: "localhost:9092"
       producer:
         key-serializer: "org.apache.kafka.common.serialization.StringSerializer"
         value-serializer: "serialization.avro.AvroSerializer"

@@ -1,27 +1,18 @@
-logging:
-  level:
-    telemetry: TRACE
-    org:
-      springframework: ERROR
-      springframework.cloud.netflix.eureka: INFO
-      apache.kafka: WARN
-
 aggregator:
-  kafka:
-    bootstrap-servers: "localhost:9092"
-    producer:
-      properties:
-        "bootstrap.servers": ${aggregator.kafka.bootstrap-servers}
-        "key.serializer": "org.apache.kafka.common.serialization.StringSerializer"
-        "value.serializer": "serialization.avro.AvroSerializer"
-      topic: "telemetry.snapshots.v1"
-
-consumer:
-  properties:
-    "bootstrap.servers": ${aggregator.kafka.bootstrap-servers}
-    "enable.auto.commit": false
-    "group.id": "telemetry.aggregator.sensors"
-    "key.deserializer": "org.apache.kafka.common.serialization.StringDeserializer"
-    "value.deserializer": "deserialization.avro.SensorEventDeserializer"
-  topic: "telemetry.sensors.v1"
-  pull-timeout: 100ms
+  spring:
+    kafka:
+      bootstrap-server: "localhost:9092"
+      
+      producer:
+        key-serializer: "org.apache.kafka.common.serialization.StringSerializer"
+        value-serializer: "serialization.avro.AvroSerializer"
+      
+      consumer:
+        key-deserializer: "org.apache.kafka.common.serialization.StringDeserializer"
+        value-deserializer: "deserialization.avro.SensorEventDeserializer"
+        group-id: "aggregator-group"
+      
+      topics:
+        snapshot-topic-name: "telemetry.snapshots.v1"
+        hub-topic-name: "telemetry.hubs.v1"
+        sensor-topic-name: "telemetry.sensors.v1"
