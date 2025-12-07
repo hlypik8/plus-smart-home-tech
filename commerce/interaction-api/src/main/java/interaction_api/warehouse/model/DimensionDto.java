@@ -1,5 +1,7 @@
 package interaction_api.warehouse.model;
 
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Data;
@@ -10,11 +12,15 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class DimensionDto {
 
+    @NotNull
+    @Min(value = 1)
     Double width;
 
+    @NotNull
+    @Min(value = 1)
     Double height;
 
+    @NotNull
+    @Min(value = 1)
     Double depth;
-
-    Long quantity = 0L;
 }

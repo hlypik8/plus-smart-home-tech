@@ -1,6 +1,7 @@
 package warehouse;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -17,6 +18,7 @@ import java.util.UUID;
 @NoArgsConstructor
 public class WarehouseProduct {
 
+    @Id
     UUID productId;
 
     boolean isFragile;
@@ -29,5 +31,5 @@ public class WarehouseProduct {
 
     double weight;
 
-    Long quantity;
+    Long quantity = 0L;
 }
