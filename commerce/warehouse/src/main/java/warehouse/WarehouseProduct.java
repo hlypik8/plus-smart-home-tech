@@ -1,5 +1,6 @@
 package warehouse;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -19,17 +20,24 @@ import java.util.UUID;
 public class WarehouseProduct {
 
     @Id
+    @Column(name = "product_id")
     UUID productId;
 
-    boolean isFragile;
+    @Column(name = "fragile")
+    Boolean isFragile;
 
-    double width;
+    @Column(name = "width")
+    Double width;
 
-    double height;
+    @Column(name = "height")
+    Double height;
 
-    double depth;
+    @Column(name = "depth")
+    Double depth;
 
-    double weight;
+    @Column(name = "weight")
+    Double weight;
 
+    @Column(name = "quantity")
     Long quantity = 0L;
 }
