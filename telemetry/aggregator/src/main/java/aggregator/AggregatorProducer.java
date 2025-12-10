@@ -13,11 +13,11 @@ import java.util.Map;
 @Component
 public class AggregatorProducer {
 
-    @Value("${bootstrap.server}")
+    @Value("${aggregator.spring.kafka.bootstrap-server}")
     private String bootstrapServer;
-    @Value("${key.serializer}")
+    @Value("${aggregator.spring.kafka.producer.key-serializer}")
     private String keySerializer;
-    @Value("${value.serializer}")
+    @Value("${aggregator.spring.kafka.producer.value-serializer}")
     private String valueSerializer;
 
 

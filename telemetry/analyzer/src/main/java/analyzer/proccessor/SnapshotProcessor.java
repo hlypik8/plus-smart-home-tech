@@ -40,7 +40,7 @@ public class SnapshotProcessor implements Runnable {
     private final MapperClass mapper;
     private final ScenarioRepository repository;
 
-    @Value("${snapshot.topic}")
+    @Value("${spring.kafka.topics.snapshots-topic-name}")
     private String snapshotTopic;
 
     @Override

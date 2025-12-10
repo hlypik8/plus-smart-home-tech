@@ -14,17 +14,17 @@ import java.util.Map;
 @Configuration
 @Slf4j
 public class ConsumerFactory {
-    @Value("${bootstrap.server}")
+    @Value("${spring.kafka.bootstrap-server}")
     private String bootstrapServer;
-    @Value("${key.deserializer}")
+    @Value("${spring.kafka.consumer.key-deserializer}")
     private String keyDeserializer;
-    @Value("${value.hub.deserializer}")
+    @Value("${spring.kafka.consumer.hub-event-value-deserializer}")
     private String valueHubDeserializer;
-    @Value("${value.snapshot.deserializer}")
+    @Value("${spring.kafka.consumer.snapshot-value-deserializer}")
     private String valueSnapshotDeserializer;
-    @Value("${client.hub.group}")
+    @Value("${spring.kafka.consumer.hub-event-group-id}")
     private String clientHubGroup;
-    @Value("${client.snapshot.group}")
+    @Value("${spring.kafka.consumer.snapshot-group-id}")
     private String clientSnapshotGroup;
 
 

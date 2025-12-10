@@ -25,9 +25,9 @@ public class AggregatorStarter {
     private final AggregatorProducer producerFactory;
     private final AggregatorService service = new AggregatorService();
 
-    @Value("${sensor.topic}")
+    @Value("${aggregator.spring.kafka.topics.sensor-topic-name}")
     private String sensorTopic;
-    @Value("${snapshot.topic}")
+    @Value("${aggregator.spring.kafka.topics.snapshot-topic-name}")
     private String snapshotTopic;
 
     public void start() {

@@ -20,11 +20,11 @@ import java.util.Map;
 @Slf4j
 public class TelemetryProducerConfig {
 
-    @Value("${bootstrap.server}")
+    @Value("${collector.spring.kafka.bootstrap-server}")
     private String bootstrapServer;
-    @Value("${key.serializer}")
+    @Value("${collector.spring.kafka.producer.key-serializer}")
     private String keySerializer;
-    @Value("${value.serializer}")
+    @Value("${collector.spring.kafka.producer.value-serializer}")
     private String valueSerializer;
 
     @Bean

@@ -7,7 +7,6 @@ import org.springframework.context.ConfigurableApplicationContext;
 
 @SpringBootApplication
 @ConfigurationPropertiesScan
-
 public class AggregatorApp {
     public static void main(String[] args) {
         SpringApplication.run(AggregatorApp.class, args);
