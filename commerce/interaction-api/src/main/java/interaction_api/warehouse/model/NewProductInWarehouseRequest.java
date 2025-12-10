@@ -17,7 +17,7 @@ public class NewProductInWarehouseRequest {
     @NotNull
     UUID productId;
 
-    Boolean isFragile;
+    Boolean fragile;
 
     @NotNull
     DimensionDto dimensions;

@@ -24,7 +24,7 @@ public class WarehouseProduct {
     UUID productId;
 
     @Column(name = "fragile")
-    Boolean isFragile;
+    Boolean fragile;
 
     @Column(name = "width")
     Double width;
