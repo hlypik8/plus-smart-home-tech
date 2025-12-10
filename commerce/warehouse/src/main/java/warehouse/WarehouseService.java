@@ -40,13 +40,13 @@ public class WarehouseService {
                     newProductInWarehouseRequest.getProductId() + " уже есть на складе");
         } else {
             log.info("Новый товар успешно добавлен id: {}", newProductInWarehouseRequest.getProductId());
-            repository.save(mapper.toWarehouseProduct(newProductInWarehouseRequest));
+            repository.save(mapper.fromDto(newProductInWarehouseRequest));
         }
     }
 
     public BookedProductsDto check(ShoppingCartDto shoppingCartDto) throws NoSpecifiedProductInWarehouseException {
 
-        log.info("Проверка корзины с id {}", shoppingCartDto.getShoppingCartId());
+        log.info("Проверка корзины с id {}", shoppingCartDto.getCartId());
         double deliveryWeight = 0;
         double deliveryVolume = 0;
         boolean isFragile = false;
@@ -64,10 +64,10 @@ public class WarehouseService {
         for(WarehouseProduct product : foundProducts){
             deliveryWeight += product.getWeight();
             deliveryVolume += product.getDepth() + product.getHeight() + product.getWidth();
-            isFragile |= product.isFragile();
+            isFragile |= product.getFragile();
         }
         log.info("Проверка корзины с id: {} выполнена успешно вес: {}, объем: {}, хрупкость: {}",
-                shoppingCartDto.getShoppingCartId(), deliveryWeight, deliveryVolume, isFragile);
+                shoppingCartDto.getCartId(), deliveryWeight, deliveryVolume, isFragile);
         return new BookedProductsDto(deliveryWeight, deliveryVolume, isFragile);
     }
 

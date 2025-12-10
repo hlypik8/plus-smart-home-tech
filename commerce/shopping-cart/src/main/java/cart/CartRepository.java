@@ -1,4 +1,4 @@
-package cart.nes;
+package cart;
 
 
 import org.springframework.data.jpa.repository.JpaRepository;

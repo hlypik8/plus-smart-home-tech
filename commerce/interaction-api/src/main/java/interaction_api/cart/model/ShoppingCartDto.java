@@ -10,7 +10,7 @@ import java.util.UUID;
 @Data
 public class ShoppingCartDto {
 
-    private UUID shoppingCartId;
+    private UUID cartId;
 
     private Map<UUID, Integer> products;
 }

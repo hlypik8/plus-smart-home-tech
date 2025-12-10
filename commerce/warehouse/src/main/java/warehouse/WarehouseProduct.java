@@ -1,11 +1,9 @@
 package warehouse;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+import org.hibernate.annotations.UuidGenerator;
 
 import java.util.UUID;
 
@@ -24,7 +22,7 @@ public class WarehouseProduct {
     UUID productId;
 
     @Column(name = "fragile")
-    Boolean isFragile;
+    Boolean fragile;
 
     @Column(name = "width")
     Double width;
@@ -39,5 +37,5 @@ public class WarehouseProduct {
     Double weight;
 
     @Column(name = "quantity")
-    Long quantity = 0L;
+    long quantity = 0L;
 }

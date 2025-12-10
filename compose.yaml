@@ -34,9 +34,9 @@ services:
                              --bootstrap-server kafka:29092'"
     init: true
 
-  db:
+  analyzer-db:
     image: postgres:16.1
-    container_name: pg-analyzer
+    container_name: analyzer-db
     ports:
       - "6541:5432"
     environment:
@@ -48,7 +48,6 @@ services:
       timeout: 5s
       interval: 5s
       retries: 10
-
 
   warehouse-db:
     image: postgres:16.1
@@ -64,3 +63,39 @@ services:
       timeout: 5s
       interval: 5s
       retries: 10
+    volumes:
+      - ./docker/postgres/warehouse.sql:/docker-entrypoint-initdb.d/init.sql
+
+  store-db:
+    image: postgres:16.1
+    container_name: store-db
+    ports:
+      - "6539:5432"
+    environment:
+      - POSTGRES_DB=store
+      - POSTGRES_USER=store
+      - POSTGRES_PASSWORD=store
+    healthcheck:
+      test: pg_isready -q -d $$POSTGRES_DB -U $$POSTGRES_USER
+      timeout: 5s
+      interval: 5s
+      retries: 10
+    volumes:
+      - ./docker/postgres/store.sql:/docker-entrypoint-initdb.d/init.sql
+
+  cart-db:
+    image: postgres:16.1
+    container_name: cart-db
+    ports:
+      - "6538:5432"
+    environment:
+      - POSTGRES_DB=cart
+      - POSTGRES_USER=cart
+      - POSTGRES_PASSWORD=cart
+    healthcheck:
+      test: pg_isready -q -d $$POSTGRES_DB -U $$POSTGRES_USER
+      timeout: 5s
+      interval: 5s
+      retries: 10
+    volumes:
+      - ./docker/postgres/cart.sql:/docker-entrypoint-initdb.d/init.sql

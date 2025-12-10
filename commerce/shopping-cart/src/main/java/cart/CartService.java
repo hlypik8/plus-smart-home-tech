@@ -1,4 +1,4 @@
-package cart.nes;
+package cart;
 
 import interaction_api.cart.model.ChangeProductQuantityRequest;
 import interaction_api.cart.model.ShoppingCartDto;

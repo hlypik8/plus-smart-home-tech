@@ -1,13 +1,6 @@
-package cart.nes;
+package cart;
 
-import jakarta.persistence.CollectionTable;
-import jakarta.persistence.Column;
-import jakarta.persistence.ElementCollection;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.MapKeyColumn;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -30,8 +23,8 @@ import java.util.UUID;
 public class Cart {
 
     @Id
-    @UuidGenerator
     @Column(name = "cart_id")
+    @UuidGenerator
     UUID cartId;
 
     @Column(name = "username")

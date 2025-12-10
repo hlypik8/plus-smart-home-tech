@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: "jdbc:postgresql://warehouse-db:5432/warehouse"
-    username: warehouse
-    password: warehouse
+    url: "jdbc:postgresql://store-db:5432/store"
+    username: store
+    password: store
     driver-class-name: "org.postgresql.Driver"
   jpa:
     hibernate:

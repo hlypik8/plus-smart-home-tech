@@ -1,4 +1,4 @@
-package cart.nes;
+package cart;
 
 import interaction_api.cart.model.ShoppingCartDto;
 import org.mapstruct.Mapper;
@@ -9,3 +9,5 @@ import org.mapstruct.ReportingPolicy;
 public interface CartMapper {
     ShoppingCartDto toDto(Cart cart);
 }
+
+
