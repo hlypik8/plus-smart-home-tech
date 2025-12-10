@@ -6,8 +6,8 @@ import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
-@EnableFeignClients
 @ConfigurationPropertiesScan
+@EnableFeignClients
 public class WarehouseApp {
     public static void main(String[] args) {
         SpringApplication.run(WarehouseApp.class, args);

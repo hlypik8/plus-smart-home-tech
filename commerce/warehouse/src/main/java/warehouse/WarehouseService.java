@@ -64,7 +64,7 @@ public class WarehouseService {
         for(WarehouseProduct product : foundProducts){
             deliveryWeight += product.getWeight();
             deliveryVolume += product.getDepth() + product.getHeight() + product.getWidth();
-            isFragile |= product.isFragile();
+            isFragile |= product.getIsFragile();
         }
         log.info("Проверка корзины с id: {} выполнена успешно вес: {}, объем: {}, хрупкость: {}",
                 shoppingCartDto.getShoppingCartId(), deliveryWeight, deliveryVolume, isFragile);

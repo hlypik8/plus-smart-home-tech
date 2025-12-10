@@ -4,6 +4,7 @@ import interaction_api.store.model.ProductDto;
 import interaction_api.store.model.SetProductQuantitySetRequest;
 import interaction_api.store.model.enums.ProductCategory;
 import interaction_api.store.model.enums.ProductState;
+import interaction_api.store.model.exception.ProductNotFoundException;
 import jakarta.validation.Valid;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
@@ -23,14 +24,14 @@ public interface StoreFeign {
     ProductDto add(@RequestBody @Valid ProductDto productDto);
 
     @PostMapping
-    ProductDto update(@RequestBody @Valid ProductDto productDto);
+    ProductDto update(@RequestBody @Valid ProductDto productDto) throws ProductNotFoundException;
 
     @PostMapping("/removeProductFromStore")
-    Boolean delete(@RequestBody UUID productId);
+    Boolean delete(@RequestBody UUID productId) throws ProductNotFoundException;
 
     @PostMapping("/quantityState")
-    Boolean quantityUpdate(@Valid SetProductQuantitySetRequest setProductQuantitySetRequest);
+    Boolean quantityUpdate(@Valid SetProductQuantitySetRequest setProductQuantitySetRequest) throws ProductNotFoundException;
 
     @GetMapping("/{productId}")
-    ProductDto getById(@PathVariable UUID productId);
+    ProductDto getById(@PathVariable UUID productId) throws ProductNotFoundException;
 }

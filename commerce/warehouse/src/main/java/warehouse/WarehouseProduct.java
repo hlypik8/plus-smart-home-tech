@@ -39,5 +39,5 @@ public class WarehouseProduct {
     Double weight;
 
     @Column(name = "quantity")
-    Long quantity = 0L;
+    long quantity = 0L;
 }

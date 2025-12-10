@@ -1,4 +1,4 @@
-package cart.nes;
+package cart;
 
 import jakarta.persistence.CollectionTable;
 import jakarta.persistence.Column;
