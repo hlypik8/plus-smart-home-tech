@@ -15,4 +15,4 @@ eureka:
       defaultZone: http://localhost:8761/eureka/
 
 server:
-  port: 64236
+  port: 0
