@@ -6,6 +6,7 @@ import interaction_api.store.model.enums.QuantityState;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+import org.hibernate.annotations.UuidGenerator;
 
 import java.util.UUID;
 
@@ -20,10 +21,11 @@ public class StoreProduct {
 
     @Id
     @Column(name = "product_id")
+    @UuidGenerator
     UUID productId;
 
     @Column(name = "product_name")
-    String name;
+    String productName;
 
     @Column(name = "description")
     String description;
