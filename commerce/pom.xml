@@ -12,6 +12,13 @@
     <artifactId>commerce</artifactId>
     <packaging>pom</packaging>
 
+    <modules>
+        <module>interaction-api</module>
+        <module>shopping-cart</module>
+        <module>shopping-store</module>
+        <module>warehouse</module>
+    </modules>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
