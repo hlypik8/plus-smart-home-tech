@@ -1,9 +1,9 @@
 package cart;
 
-import interaction_api.cart.model.ChangeProductQuantityRequest;
-import interaction_api.cart.model.ShoppingCartDto;
-import interaction_api.cart.model.exception.NoProductsInShoppingCartException;
-import interaction_api.cart.model.exception.NotAuthorizedUserException;
+import interaction_api.cart_feign.model.ChangeProductQuantityRequest;
+import interaction_api.cart_feign.model.ShoppingCartDto;
+import interaction_api.cart_feign.model.exception.NoProductsInShoppingCartException;
+import interaction_api.cart_feign.model.exception.NotAuthorizedUserException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

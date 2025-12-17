@@ -1,22 +1,20 @@
 package store;
 
-import interaction_api.store.StoreFeign;
-import interaction_api.store.model.ProductDto;
-import interaction_api.store.model.SetProductQuantitySetRequest;
-import interaction_api.store.model.enums.ProductCategory;
-import interaction_api.store.model.exception.ProductNotFoundException;
+import interaction_api.store_feign.StoreFeignClient;
+import interaction_api.store_feign.model.ProductDto;
+import interaction_api.store_feign.model.SetProductQuantitySetRequest;
+import interaction_api.store_feign.model.enums.ProductCategory;
+import interaction_api.store_feign.model.exception.ProductNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/api/v1/shopping-store")
 @RequiredArgsConstructor
-public class StoreController implements StoreFeign {
+public class StoreController implements StoreFeignClient {
 
     private final StoreService service;
 

@@ -1,12 +1,12 @@
 package warehouse;
 
-import interaction_api.cart.model.ShoppingCartDto;
-import interaction_api.warehouse.model.AddProductToWarehouseRequest;
-import interaction_api.warehouse.model.AddressDto;
-import interaction_api.warehouse.model.BookedProductsDto;
-import interaction_api.warehouse.model.NewProductInWarehouseRequest;
-import interaction_api.warehouse.model.exception.NoSpecifiedProductInWarehouseException;
-import interaction_api.warehouse.model.exception.SpecifiedProductAlreadyInWarehouseException;
+import interaction_api.cart_feign.model.ShoppingCartDto;
+import interaction_api.warehouse_feign.model.AddProductToWarehouseRequest;
+import interaction_api.warehouse_feign.model.AddressDto;
+import interaction_api.warehouse_feign.model.BookedProductsDto;
+import interaction_api.warehouse_feign.model.NewProductInWarehouseRequest;
+import interaction_api.warehouse_feign.model.exception.NoSpecifiedProductInWarehouseException;
+import interaction_api.warehouse_feign.model.exception.SpecifiedProductAlreadyInWarehouseException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

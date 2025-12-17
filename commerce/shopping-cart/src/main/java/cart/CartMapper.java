@@ -1,6 +1,6 @@
 package cart;
 
-import interaction_api.cart.model.ShoppingCartDto;
+import interaction_api.cart_feign.model.ShoppingCartDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 

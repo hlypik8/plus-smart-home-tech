@@ -1,8 +1,7 @@
 package store;
 
-import interaction_api.store.model.ProductDto;
+import interaction_api.store_feign.model.ProductDto;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.ReportingPolicy;
 
