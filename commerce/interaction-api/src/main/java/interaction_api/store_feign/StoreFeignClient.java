@@ -13,7 +13,8 @@ import org.springframework.data.domain.Pageable;
 import java.util.UUID;
 
 
-@FeignClient(name = "shopping-store", path = "api/v1/shopping-store")
+@FeignClient(name = "shopping-store")
+@RequestMapping("/api/v1/shopping-store")
 public interface StoreFeignClient {
 
     @GetMapping

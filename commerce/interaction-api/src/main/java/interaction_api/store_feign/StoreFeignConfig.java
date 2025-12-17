@@ -4,6 +4,6 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@EnableFeignClients(clients = {interaction_api.store_feign.StoreFeignClient.class})
+@EnableFeignClients(basePackages = "interaction_api.store_feign")
 public class StoreFeignConfig {
 }

@@ -12,7 +12,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-@FeignClient(name = "shopping-cart", path = "/api/v1/shopping-cart")
+@FeignClient(name = "shopping-cart")
+@RequestMapping("/api/v1/shopping-cart")
 public interface CartFeignClient {
 
     @GetMapping

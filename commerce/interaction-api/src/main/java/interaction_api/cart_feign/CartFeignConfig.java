@@ -4,6 +4,6 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@EnableFeignClients(clients = {interaction_api.cart_feign.CartFeignClient.class})
+@EnableFeignClients(basePackages = "interaction_api.cart_feign")
 public class CartFeignConfig {
 }
