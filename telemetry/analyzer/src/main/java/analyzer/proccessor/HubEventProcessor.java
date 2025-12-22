@@ -32,7 +32,7 @@ public class HubEventProcessor implements Runnable {
     private final SensorRepository sensorRepository;
     private final ScenarioRepository scenarioRepository;
 
-    @Value("${hub.topic}")
+    @Value("${spring.kafka.topics.hub-topic-name}")
     private String hubTopic;
 
     @Override

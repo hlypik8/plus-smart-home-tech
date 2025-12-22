@@ -21,9 +21,9 @@ public class CollectorService {
     private final AvroMapper avroMapper;
     private final TelemetryProducerConfig config;
 
-    @Value("${sensor.topic}")
+    @Value("${collector.spring.kafka.topics.sensor-topic-name}")
     private String sensorTopic;
-    @Value("${hub.topic}")
+    @Value("${collector.spring.kafka.topics.hub-topic-name}")
     private String hubTopic;
 
     public void sendSensorData(SensorEventAvro event) {
