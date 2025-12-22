@@ -1,10 +1,10 @@
 package store;
 
-import interaction_api.store_feign.model.ProductDto;
-import interaction_api.store_feign.model.SetProductQuantitySetRequest;
-import interaction_api.store_feign.model.enums.ProductCategory;
-import interaction_api.store_feign.model.enums.ProductState;
-import interaction_api.store_feign.model.exception.ProductNotFoundException;
+import interaction_api.feign.store.model.ProductDto;
+import interaction_api.feign.store.model.SetProductQuantitySetRequest;
+import interaction_api.feign.store.model.enums.ProductCategory;
+import interaction_api.feign.store.model.enums.ProductState;
+import interaction_api.feign.store.model.exception.ProductNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;

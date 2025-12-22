@@ -1,10 +1,10 @@
 package cart;
 
-import interaction_api.cart_feign.CartFeignClient;
-import interaction_api.cart_feign.model.ChangeProductQuantityRequest;
-import interaction_api.cart_feign.model.ShoppingCartDto;
-import interaction_api.cart_feign.model.exception.NoProductsInShoppingCartException;
-import interaction_api.cart_feign.model.exception.NotAuthorizedUserException;
+import interaction_api.feign.cart.CartFeignClient;
+import interaction_api.feign.cart.model.ChangeProductQuantityRequest;
+import interaction_api.feign.cart.model.ShoppingCartDto;
+import interaction_api.feign.cart.model.exception.NoProductsInShoppingCartException;
+import interaction_api.feign.cart.model.exception.NotAuthorizedUserException;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;

@@ -1,8 +1,8 @@
 package store;
 
-import interaction_api.store_feign.model.enums.ProductCategory;
-import interaction_api.store_feign.model.enums.ProductState;
-import interaction_api.store_feign.model.enums.QuantityState;
+import interaction_api.feign.store.model.enums.ProductCategory;
+import interaction_api.feign.store.model.enums.ProductState;
+import interaction_api.feign.store.model.enums.QuantityState;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;

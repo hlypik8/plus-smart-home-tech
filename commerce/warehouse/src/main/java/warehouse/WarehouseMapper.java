@@ -1,6 +1,6 @@
 package warehouse;
 
-import interaction_api.warehouse_feign.model.NewProductInWarehouseRequest;
+import interaction_api.feign.warehouse.model.NewProductInWarehouseRequest;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;
